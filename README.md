@@ -1,8 +1,8 @@
-<h3 align="center">An App for Ladies</h3>
+<h3 align="center">Lady</h3>
 
 ## About The Project
 
-The application will provide women tools for improving themselves and their life quality by multiple features such as monitoring weight, fitness, days for increasing the chances of getting pregnant - or avoid getting pregnant, depending on the case, time management, inspirational quotes and wisdoms of life to start the day on the right foot and provide encouragement, and more.
+The application will provide women tools for improving themselves and their life quality by multiple features such as monitoring weight, fitness, days for increasing the chances of getting pregnant - or avoid getting pregnant, depending on the case -, time management, inspirational quotes and wisdoms of life to start the day on the right foot and provide encouragement, and more.
 
 ### Tech Stacks
 
