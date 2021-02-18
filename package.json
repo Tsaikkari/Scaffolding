@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"npm run watch-ts\" \"npm run watch-js\" \"./srcipts/db.sh\"",
+    "build": "npm run build-ts && npm run lint", 
     "watch-ts": "tsc --watch",
     "watch-js": "nodemon dist/index.js",
     "build-ts": "tsc",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kirsi Trospe",
