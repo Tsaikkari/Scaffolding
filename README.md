@@ -12,6 +12,7 @@ The application will provide women tools for improving themselves and their life
    - [Redux](https://react-redux.js.org/)
    - [React Bootstrap](https://semantic-ui.com/)
    - [Typescript](https://www.typescriptlang.org/)
+   - [DevExtreme React](https://github.com/DevExpress/devextreme)
 
 2. BackEnd
    - [Express](https://expressjs.com/)

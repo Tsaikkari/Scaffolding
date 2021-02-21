@@ -4,10 +4,15 @@ import {
   Column,
   BaseEntity,
   OneToOne,
+  OneToMany,
+  ManyToMany,
   JoinColumn,
+  JoinTable,
 } from 'typeorm'
 
 import Credential from './Credential.postgres'
+import FitnessProgram from './FitnessProgram.postgres'
+import Appointment from './Appointment.postgres'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -19,6 +24,12 @@ export default class User extends BaseEntity {
 
   @Column({ nullable: true })
   image!: string
+
+  @Column({ nullable: true})
+  weight!: number
+
+  @Column({ nullable: true})
+  targetWeight!: number
 
   @Column({ nullable: true})
   healthCheckDate!: string
@@ -34,4 +45,17 @@ export default class User extends BaseEntity {
   })
   @JoinColumn()
   credentials!: Credential
+
+  @ManyToMany(() => FitnessProgram, (fitnessProgram) => fitnessProgram.users, {
+    cascade: true, 
+    eager: true,
+  })
+  @JoinTable()
+  fitnessPrograms!: FitnessProgram[]
+
+  @OneToMany(() => Appointment, (appointment) => appointment.user, {
+    cascade: ['remove'], 
+  })
+  @JoinTable()
+  appointments!: Appointment[]
 }
