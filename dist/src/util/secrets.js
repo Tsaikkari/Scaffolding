@@ -7,7 +7,7 @@ exports.ormConfig = exports.ENVIRONMENT = void 0;
 var dotenv_1 = __importDefault(require("dotenv"));
 var fs_1 = __importDefault(require("fs"));
 var logger_1 = __importDefault(require("./logger"));
-//import Entities from '../entities'
+var entities_1 = __importDefault(require("../entities"));
 if (fs_1.default.existsSync('.env')) {
     logger_1.default.debug('Using .env file to supply config environment variables');
     dotenv_1.default.config({ path: '.env' });
@@ -27,7 +27,7 @@ exports.ormConfig = {
     database: 'scaffolding',
     syncronize: true,
     logging: false,
-    //entities: Entities,
+    entities: entities_1.default,
     cli: {
         entitiesDir: 'entities',
         migrationsDir: 'migrations',
