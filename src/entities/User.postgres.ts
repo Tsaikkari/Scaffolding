@@ -21,7 +21,7 @@ export default class User extends BaseEntity {
   image!: string
 
   @Column({ nullable: true})
-  heathCheckDate!: string
+  healthCheckDate!: string
 
   @Column({ nullable: true})
   dentistDate!: string
