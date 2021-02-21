@@ -15,7 +15,9 @@
   "author": "Kirsi Trospe",
   "license": "MIT",
   "dependencies": {
+    "@types/winston": "^2.4.4",
     "concurrently": "^5.3.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "nodemon": "^2.0.7",
     "typeorm": "^0.2.31",
