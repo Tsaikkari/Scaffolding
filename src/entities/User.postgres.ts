@@ -13,6 +13,7 @@ import {
 import Credential from './Credential.postgres'
 import FitnessProgram from './FitnessProgram.postgres'
 import Appointment from './Appointment.postgres'
+import Note from './Note.Postgres'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -58,4 +59,10 @@ export default class User extends BaseEntity {
   })
   @JoinTable()
   appointments!: Appointment[]
+
+  @OneToMany(() => Note, (note) => note.user, {
+    cascade: ['remove'], 
+  })
+  @JoinTable()
+  notes!: Note[]
 }
