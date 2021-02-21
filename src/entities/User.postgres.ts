@@ -4,13 +4,10 @@ import {
   Column,
   BaseEntity,
   OneToOne,
-  ManyToMany,
   JoinColumn,
-  JoinTable,
 } from 'typeorm'
 
 import Credential from './Credential.postgres'
-import HealthCheck from './HealthCheck.postgres'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -23,15 +20,18 @@ export default class User extends BaseEntity {
   @Column({ nullable: true })
   image!: string
 
+  @Column({ nullable: true})
+  heathCheckDate!: string
+
+  @Column({ nullable: true})
+  dentistDate!: string
+
+  @Column({ nullable: true})
+  gynoDate!: string
+
   @OneToOne(() => Credential, (credential) => credential.user, {
     cascade: true,
   })
   @JoinColumn()
   credentials!: Credential
-
-  @ManyToMany(() => HealthCheck, (healthCheck) => healthCheck.users, {
-      cascade: true
-  })
-  @JoinTable()
-  healthChecks!: HealthCheck[]
 }
