@@ -24,5 +24,53 @@ The application will provide women tools for improving themselves and their life
 3. Testing
    - [Jest](https://jestjs.io/)
 4. Deployment
+
    - [AWS](https://aws.amazon.com/)
    - [Docker](https://www.docker.com)
+
+   <!-- GETTING STARTED -->
+
+## Getting Started
+
+This section will give you the instruction about setting up this project locally.
+
+### Prerequisites
+
+These are the lists of tools that you need to run the project.
+
+- [npm](https://www.npmjs.com/)
+- [Nodejs](https://nodejs.org/en/)
+- [Docker](https://docker.com)
+
+### Installation of Repo
+
+1. Clone the repo
+
+```sh
+git clone git@github.com:Integrify-Team-4/Tindev.git
+```
+
+2. Install dependencies:
+
+```sh
+npm install
+```
+
+3. For Mac and Linux user, give the permission to execute `script.sh` file. The script will run a postgres container as the app's database
+
+```sh
+chmod -x ./script.sh;
+```
+
+4. Create a `.env` file in the root directory and include the following varables:
+
+```sh
+PORT=3001
+DB_PASSWORD=secret
+```
+
+6. Finally, start the app:
+
+```sh
+npm run dev
+```
