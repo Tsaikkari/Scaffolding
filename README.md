@@ -47,7 +47,7 @@ These are the lists of tools that you need to run the project.
 1. Clone the repo
 
 ```sh
-git clone git@github.com:Integrify-Team-4/Tindev.git
+git clone git@github.com:Tsaikkari/Scaffolding.git
 ```
 
 2. Install dependencies:
