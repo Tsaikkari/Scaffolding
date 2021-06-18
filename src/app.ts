@@ -9,11 +9,13 @@ import passport from 'passport'
 import apiErrorHandler from './middlewares/apiErrorHandler'
 import apiContentType from './middlewares/apiContentType'
 
+import stressRouter from './routers/stress'
+
 const app = express()
 console.log('APP IS IN ENVIRONMENT ', ENVIRONMENT)
 //**Express configuration*/
 
-app.set('port', process.env.PORT || 5000)
+app.set('port', process.env.PORT || 3001)
 
 //**Use common 3rd-party middlewares*/
 app.use(cors())
@@ -24,6 +26,7 @@ app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 
 //**All routers here*/
+app.use('/stress', stressRouter)
 
 //**Custom API error handler*/
 app.use(apiErrorHandler)

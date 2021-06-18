@@ -5,15 +5,18 @@ import {
   BaseEntity,
   OneToOne,
   OneToMany,
+  ManyToOne,
   ManyToMany,
   JoinColumn,
   JoinTable,
+  CreateDateColumn,
 } from 'typeorm'
 
-import Credential from './Credential.postgres'
+import Group from './Group.postgres'
 import FitnessProgram from './FitnessProgram.postgres'
 import Appointment from './Appointment.postgres'
-import Note from './Note.Postgres'
+import Note from './Note.postgres'
+import Order from './Order.postgres'
 
 @Entity()
 export default class User extends BaseEntity {
@@ -21,7 +24,10 @@ export default class User extends BaseEntity {
   id!: number
 
   @Column()
-  userName!: string
+  email!: string
+
+  @Column()
+  password!: string
 
   @Column({ nullable: true })
   image!: string
@@ -41,11 +47,19 @@ export default class User extends BaseEntity {
   @Column({ nullable: true})
   gynoDate!: string
 
-  @OneToOne(() => Credential, (credential) => credential.user, {
-    cascade: true,
+  @Column()
+  role!: string
+
+  @Column({ default: false })
+  isAdmin!: boolean
+
+  @CreateDateColumn()
+  createdAt!: Date
+
+  @ManyToOne(() => Group, (group) => group.members, {
+    cascade: ['insert', 'remove'],
   })
-  @JoinColumn()
-  credentials!: Credential
+  group!: Group
 
   @ManyToMany(() => FitnessProgram, (fitnessProgram) => fitnessProgram.users, {
     cascade: true, 
@@ -65,4 +79,9 @@ export default class User extends BaseEntity {
   })
   @JoinTable()
   notes!: Note[]
+
+  @OneToMany(() => Order, (order) => order.user, {
+    cascade: true,
+  })
+  orders!: Order[]
 }
