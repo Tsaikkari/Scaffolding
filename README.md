@@ -1,4 +1,4 @@
-<h3 align="center">Lady</h3>
+<h3 align="center">For Women</h3>
 
 ## About The Project
 
