@@ -9,7 +9,7 @@ const JWTStrategy = passportJWT.Strategy
 
 export const local = new LocalStrategy(
   {
-    usernameField: 'username',
+    usernameField: 'email',
     passwordField: 'password',
   },
   async (email: string, password: string, done: any) => {
@@ -20,13 +20,13 @@ export const local = new LocalStrategy(
       })
 
       if (!user) {
-        return done(null, false, { message: `Username ${email} not found` })
+        return done(null, false, { message: `Email ${email} not found` })
       }
 
       const match = await bcrypt.compare(password, user.password)
 
       if (!match) {
-        return done(null, false, { message: 'Invalid username or password' })
+        return done(null, false, { message: 'Invalid email or password' })
       }
 
       return done(null, user)

@@ -66,7 +66,7 @@ chmod -x ./script.sh;
 
 ```sh
 PORT=3001
-DB_PASSWORD=secret
+DB_PASSWORD=niceDatabase
 ```
 
 6. Finally, start the app:
