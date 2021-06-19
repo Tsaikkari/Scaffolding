@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express'
 
-import { InternalServerError, UnauthorizedError } from '../helpers/apiError'
+import { InternalServerError, NotFoundError, UnauthorizedError } from '../helpers/apiError'
 import User from '../entities/User.postgres'
 
 const admin = async (
@@ -10,11 +10,19 @@ const admin = async (
 ) => {
     const user = req.user as User
 
-    if (user && user.isAdmin === true) {
-      return next()
-    } else {
-      return next(new UnauthorizedError('Not authorized as an admin'))
+    if (!user) {
+      return next(new NotFoundError('user not found'))
     }
+    if (user.isAdmin !== true) {
+      return next(new UnauthorizedError('Not an admin'))
+    }
+    return next()
+
+    // if (user && user.isAdmin === true) {
+    //   return next()
+    // } else {
+    //   return next(new UnauthorizedError('Not authorized as an admin'))
+    // }
   }
 
 export default admin

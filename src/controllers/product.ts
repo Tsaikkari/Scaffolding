@@ -8,7 +8,6 @@ import {
 } from '../helpers/apiError'
 import Product from '../entities/Product.postgres'
 
-// TODO: only for admin
 export const createProduct = async (
   req: Request,
   res: Response,

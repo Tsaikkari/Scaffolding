@@ -62,15 +62,6 @@ export const updateUser = async (
     if (!user) {
       return next(new NotFoundError())
     }
-    if (update.email) {
-      user.email = update.email
-    }
-    if (update.image) {
-      user.image = update.image
-    }
-    if (update.group) {
-      user.group = update.group
-    }
 
     if (update.password) {
       if (update.password.length > 30) {
@@ -81,9 +72,9 @@ export const updateUser = async (
         await User.save(user)
       }
     }
-    await User.save(user)
+    const updatedUser = await User.update(user.id, update)
 
-    res.deliver(200, 'Updated user', user)
+    res.deliver(200, 'Updated user', updatedUser)
   } catch (error) {
     next(new InternalServerError(error.message))
   }
